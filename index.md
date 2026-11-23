@@ -77,7 +77,7 @@ Our work is funded by federal agencies, children's hospitals and foundations. [S
 
 #### Join us
 
-{% if site.recruiting %}<div class="recruiting-banner">We are actively recruiting students to lead or contribute to ongoing projects.</div>{% else %}We are not actively recruiting at the moment. Exceptional PhD applicants can still reach out. See **[Join Us]({{ "join" | relative_url }})** for how to apply and what we look for.{% endif %}
+{% if site.recruiting %}<div class="recruiting-banner">We are actively recruiting students to lead or contribute to ongoing projects.</div>{% else %}We are always seeking motivated students to work with. See **[Join Us]({{ "join" | relative_url }})** for how to apply and what we look for.{% endif %}
 
 {% include section.html %}
 

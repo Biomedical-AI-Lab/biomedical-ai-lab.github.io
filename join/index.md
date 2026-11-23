@@ -12,6 +12,8 @@ redirect_from:
 {% assign brand = site.data.affiliation %}
 {% if site.recruiting %}
 <div class="recruiting-banner">We are actively recruiting students to lead or contribute to ongoing projects.</div>
+{% else %}
+<div class="status-note"><strong>We are always seeking motivated students to work with.</strong></div>
 {% endif %}
 
 {% include section.html %}

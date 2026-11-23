@@ -25,6 +25,10 @@ jobs:
         if: github.event.action != 'closed'
         # runs potentially untrusted code
         uses: ruby/setup-ruby@v1
+        env:
+          # posix-spawn (needed by jekyll-last-modified-at) fails to compile
+          # under GCC 14's stricter pointer checks; relax that one check.
+          BUNDLE_BUILD__POSIX___SPAWN: "--with-cflags=-Wno-error=incompatible-pointer-types"
         with:
           ruby-version: "3.1"
           bundler-cache: true
