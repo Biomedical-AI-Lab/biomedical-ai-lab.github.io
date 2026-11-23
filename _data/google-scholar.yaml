@@ -1,0 +1,11 @@
+# Prof. Albert's Google Scholar profile, checked weekly for new publications
+# (see .github/workflows/on-schedule.yaml). Needs the GOOGLE_SCHOLAR_API_KEY
+# repository secret (a SerpAPI key); without it this file is ignored.
+#
+# Papers already listed in sources.yaml (by DOI) are not added again.
+# To hide a Scholar item, add its title (or the start of it) under exclude.
+
+- gsid: LPzMx1IAAAAJ
+  from: 2020
+  # titles to hide, e.g. exclude: ["Some preprint title"]
+  exclude: []

@@ -2,9 +2,9 @@ name: on-schedule
 run-name: On schedule
 
 on:
-  # run periodically
+  # run weekly: Mondays 06:00 UTC (midnight or 1 am in Texas)
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 6 * * 1"
 
   # run manually by user
   workflow_dispatch:
@@ -21,4 +21,12 @@ jobs:
     uses: ./.github/workflows/update-citations.yaml
     secrets: inherit
     with:
-      open-pr: true
+      # commit new citations (including new Google Scholar papers) straight to main
+      open-pr: false
+
+  # rebuild and redeploy the site so the Publications page shows them;
+  # a commit made by a workflow doesn't trigger the on-push build by itself
+  build-site:
+    needs: update-citations
+    if: ${{ always() }}
+    uses: ./.github/workflows/build-site.yaml

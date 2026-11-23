@@ -257,3 +257,33 @@ def cite_with_manubot(_id):
 
     # return citation data
     return citation
+
+
+def normalize_title(title):
+    """
+    lowercase title with punctuation and extra spaces removed, for matching the
+    same paper across sources (e.g. a DOI entry and its Google Scholar entry)
+    """
+    import re
+
+    title = re.sub(r"<[^>]+>", " ", str(title or ""))
+    title = re.sub(r"[^a-z0-9 ]+", " ", title.lower())
+    return " ".join(title.split())
+
+
+def same_title(a, b):
+    """
+    whether two titles are (almost) the same paper title
+    """
+    from difflib import SequenceMatcher
+
+    a, b = normalize_title(a), normalize_title(b)
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+    # Scholar sometimes shortens long titles
+    shorter, longer = sorted([a, b], key=len)
+    if len(shorter) >= 30 and longer.startswith(shorter):
+        return True
+    return SequenceMatcher(None, a, b).ratio() >= 0.9

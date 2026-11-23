@@ -168,6 +168,28 @@ for index, source in enumerate(sources):
 
 log()
 
+log("Removing Google Scholar entries already cited from other sources")
+
+# Scholar entries have plainer details than DOI-based ones, so when the same
+# paper comes from both, keep the other one
+others = [c for c in citations if get_safe(c, "plugin", "") != "google-scholar.py"]
+kept = []
+for citation in citations:
+    if get_safe(citation, "plugin", "") == "google-scholar.py":
+        title = get_safe(citation, "title", "")
+        if any(same_title(title, get_safe(o, "title", "")) for o in others):
+            log(f"Already cited: {title}", indent=1)
+            continue
+        # and drop repeats within Scholar itself
+        if any(same_title(title, get_safe(k, "title", "")) for k in kept if get_safe(k, "plugin", "") == "google-scholar.py"):
+            continue
+    kept.append(citation)
+log(f"{len(citations) - len(kept)} duplicate(s) removed", indent=1)
+citations = kept
+
+
+log()
+
 log("Saving updated citations")
 
 

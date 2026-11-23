@@ -45,6 +45,12 @@ Every change goes through a pull request: edit on a branch, open a PR, check the
 
 Add its DOI (or `arxiv:` / `pubmed:` id) to `_data/sources.yaml` with theme tags. The cite workflow turns it into a full citation in `_data/citations.yaml`; never edit that file by hand.
 
+### New papers from Google Scholar (weekly)
+
+Every Monday the `on-schedule` workflow reads Prof. Albert's Google Scholar profile, newest first, adds any paper from 2020 on that isn't already listed, and redeploys the site. Settings are in `_data/google-scholar.yaml`; to hide a Scholar item, add its title under `exclude`. Papers also in `sources.yaml` are kept from there, since DOI-based citations have fuller details. Run it any time from the Actions tab: **On schedule → Run workflow**.
+
+It needs a SerpAPI key (Google Scholar has no official API) saved as the repository secret `GOOGLE_SCHOLAR_API_KEY`. Without the key the step is skipped and the rest of the site builds as usual.
+
 ### Pull all of Prof. Albert's papers automatically
 
 Create `_data/orcid.yaml` with his ORCID iD:
