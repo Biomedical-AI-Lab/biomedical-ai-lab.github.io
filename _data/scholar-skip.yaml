@@ -1,0 +1,7 @@
+# Google Scholar items the weekly Scholar check should NOT add to the
+# Publications page (e.g. preprints with no venue, or duplicates Scholar
+# lists under a slightly different title). One title per line.
+# This file is read only by the weekly check; the site itself ignores it.
+
+- "Home Care Robotic Assistant Prototype for Remote Human Supervision"
+- "Mobile Diarization Dashboard Application and Remote Vocalization Sensor Prototype"

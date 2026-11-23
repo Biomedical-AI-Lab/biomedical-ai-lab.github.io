@@ -47,9 +47,9 @@ Add its DOI (or `arxiv:` / `pubmed:` id) to `_data/sources.yaml` with theme tags
 
 ### New papers from Google Scholar (weekly)
 
-Every Monday the `on-schedule` workflow reads Prof. Albert's Google Scholar profile, newest first, adds any paper from 2020 on that isn't already listed, and redeploys the site. Settings are in `_data/google-scholar.yaml`; to hide a Scholar item, add its title under `exclude`. Papers also in `sources.yaml` are kept from there, since DOI-based citations have fuller details. Run it any time from the Actions tab: **On schedule → Run workflow**.
+A weekly Claude scheduled task (Mondays, 9:57 am Central) opens Prof. Albert's Google Scholar profile, sorted by year, in the lab manager's browser. It adds any paper from 2020 on that isn't already listed to `_data/sources.yaml` (by DOI when there is one) and pushes, which redeploys the site. It sends a notification before using the browser and a summary when done. It only runs when that computer is on with the Claude desktop app open.
 
-It needs a SerpAPI key (Google Scholar has no official API) saved as the repository secret `GOOGLE_SCHOLAR_API_KEY`. Without the key the step is skipped and the rest of the site builds as usual.
+To keep a Scholar item off the site, add its title to `_data/scholar-skip.yaml`.
 
 ### Pull all of Prof. Albert's papers automatically
 
