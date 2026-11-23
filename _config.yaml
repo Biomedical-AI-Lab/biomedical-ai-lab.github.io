@@ -11,7 +11,7 @@ under-construction: false
 
 # Recruiting status, shown on Join Us and Home.
 #   true  = big red "we are actively recruiting" banner
-#   false = "not actively recruiting" note
+#   false = no banner
 recruiting: false
 
 # red "Website Under Construction" notice at the top of the home page
